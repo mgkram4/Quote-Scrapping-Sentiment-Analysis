@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+    <title>Sentiment Analysis</title>
+  </head>
+  <body>
+    <h1>Sentiment Analysis Results</h1>
+    <ul>
+      {% for result in results %}
+      <li>
+        <strong>Quote:</strong> {{ result.quote }}<br />
+        <strong>Sentiment Score:</strong> {{ result.sentiment_analysis }}<br />
+        <strong>Sentiment Label:</strong>
+        {% if result.sentiment_analysis > 0 %} Positive {% elif
+        result.sentiment_analysis < 0 %} Negative {% else %} Neutral {% endif %}
+      </li>
+      <br />
+      {% endfor %}
+    </ul>
+  </body>
+</html>
